@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const urlParams = new URLSearchParams(window.location.search);
     const roomId = urlParams.get('room');
-    
+
     if (!roomId) {
         window.location.href = 'rooms.html';
         return;
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     };
 
     const room = roomDetails[roomId] || roomDetails[1];
-    
+
     document.getElementById('summary-title').textContent = room.name;
     document.getElementById('summary-price').textContent = `$${room.price}`;
     document.getElementById('summary-img').src = room.img;
@@ -42,12 +42,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Set minimum date to today
     const today = new Date().toISOString().split('T')[0];
     checkInInput.min = today;
-    
+
     checkInInput.addEventListener('change', () => {
         checkOutInput.min = checkInInput.value;
         calculateTotal();
     });
-    
+
     checkOutInput.addEventListener('change', calculateTotal);
 
     function calculateTotal() {
@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const diffTime = end - start;
             if (diffTime <= 0) return;
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
-            
+
             if (diffDays > 0) {
                 document.getElementById('summary-nights').textContent = diffDays;
                 const subtotal = diffDays * room.price;
@@ -73,15 +73,15 @@ document.addEventListener('DOMContentLoaded', () => {
     // Handle form submission
     document.getElementById('bookingForm').addEventListener('submit', async (e) => {
         e.preventDefault();
-        
+
         const checkIn = checkInInput.value;
         const checkOut = checkOutInput.value;
         const errorMsg = document.getElementById('booking-error');
         const successMsg = document.getElementById('booking-success');
         const btn = document.getElementById('submit-btn');
-        
+
         errorMsg.style.display = 'none';
-        
+
         if (new Date(checkIn) >= new Date(checkOut)) {
             errorMsg.textContent = 'Check-out date must be after check-in date.';
             errorMsg.style.display = 'block';
@@ -119,10 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
                 btn.innerHTML = '<i class="fa-solid fa-check"></i> Payment Successful!';
                 btn.style.backgroundColor = 'var(--success-color)';
-                
+
                 successMsg.textContent = 'Generating receipt...';
                 successMsg.style.display = 'block';
-                
+
                 setTimeout(() => {
                     window.location.href = `receipt.html?id=${bookingData.id}`;
                 }, 1500);
