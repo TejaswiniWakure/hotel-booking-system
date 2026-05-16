@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,6 +9,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
+
 <body>
     <nav class="navbar">
         <div class="container">
@@ -24,7 +26,8 @@
         <aside class="sidebar">
             <nav class="sidebar-nav">
                 <a href="#" class="active" onclick="switchTab('rooms')"><i class="fa-solid fa-bed"></i> Manage Rooms</a>
-                <a href="#" onclick="switchTab('bookings')"><i class="fa-solid fa-calendar-check"></i> Manage Bookings</a>
+                <a href="#" onclick="switchTab('bookings')"><i class="fa-solid fa-calendar-check"></i> Manage
+                    Bookings</a>
                 <a href="#" onclick="switchTab('users')"><i class="fa-solid fa-users"></i> Manage Users</a>
             </nav>
         </aside>
@@ -34,7 +37,8 @@
             <div id="tab-rooms">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
                     <h2>Manage Rooms</h2>
-                    <button class="btn btn-primary" onclick="showAddRoomModal()"><i class="fa-solid fa-plus"></i> Add Room</button>
+                    <button class="btn btn-primary" onclick="showAddRoomModal()"><i class="fa-solid fa-plus"></i> Add
+                        Room</button>
                 </div>
                 <div class="table-container">
                     <table>
@@ -49,7 +53,9 @@
                             </tr>
                         </thead>
                         <tbody id="admin-rooms-body">
-                            <tr><td colspan="6" style="text-align: center;">Loading rooms...</td></tr>
+                            <tr>
+                                <td colspan="6" style="text-align: center;">Loading rooms...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -72,7 +78,9 @@
                             </tr>
                         </thead>
                         <tbody id="admin-bookings-body">
-                            <tr><td colspan="7" style="text-align: center;">Loading bookings...</td></tr>
+                            <tr>
+                                <td colspan="7" style="text-align: center;">Loading bookings...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -93,7 +101,9 @@
                             </tr>
                         </thead>
                         <tbody id="admin-users-body">
-                            <tr><td colspan="5" style="text-align: center;">Loading users...</td></tr>
+                            <tr>
+                                <td colspan="5" style="text-align: center;">Loading users...</td>
+                            </tr>
                         </tbody>
                     </table>
                 </div>
@@ -135,7 +145,7 @@
                     </td>
                 </tr>
             `;
-            
+
             document.getElementById('admin-bookings-body').innerHTML = `
                 <tr>
                     <td>1042</td>
@@ -175,4 +185,5 @@
         }
     </script>
 </body>
+
 </html>
