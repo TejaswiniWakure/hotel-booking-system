@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Receipt | LuxeStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body {
+            background-color: var(--bg-body);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            padding: 2rem;
+        }
+        
+        .receipt-card {
+            background: var(--bg-main);
+            width: 100%;
+            max-width: 600px;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .receipt-header {
+            background: var(--primary-color);
+            color: white;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            position: relative;
+        }
+
+        .receipt-header h1 {
+            margin: 0;
+            font-size: 2rem;
+            font-weight: 700;
+        }
+
+        .receipt-header p {
+            margin: 0.5rem 0 0;
+            opacity: 0.9;
+        }
+
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            background: white;
+            color: var(--primary-color);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .receipt-body {
+            padding: 2rem;
+        }
+
+        .receipt-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .receipt-row:last-child {
+            border-bottom: none;
+        }
+
+        .receipt-label {
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .receipt-value {
+            font-weight: 600;
+            color: var(--text-main);
+            text-align: right;
+        }
+
+        .receipt-total {
+            background: rgba(59, 130, 246, 0.05);
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 2px solid var(--border-color);
+        }
+
+        .receipt-actions {
+            padding: 2rem;
+            display: flex;
+            gap: 1rem;
+            background: var(--bg-body);
+        }
+
+        @media print {
+            body { background: white; padding: 0; }
+            .receipt-card { box-shadow: none; border: none; }
+            .receipt-actions { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="receipt-card">
+        <div class="receipt-header">
+            <div class="success-icon"><i class="fa-solid fa-check"></i></div>
+            <h1>Payment Successful</h1>
+            <p>Thank you for booking with LuxeStay</p>
+        </div>
+
+        <div class="receipt-body">
+            <div style="text-align: center; margin-bottom: 2rem;">
+                <h2 style="margin: 0; font-size: 1.25rem;">Booking Receipt</h2>
+                <p style="color: var(--text-muted); margin-top: 0.25rem;" id="receipt-date"></p>
+            </div>
+
+            <div class="receipt-row">
+                <span class="receipt-label">Booking ID</span>
+                <span class="receipt-value" id="receipt-id">#---</span>
+            </div>
+            <div class="receipt-row">
+                <span class="receipt-label">Guest Name</span>
+                <span class="receipt-value" id="receipt-guest">---</span>
+            </div>
+            <div class="receipt-row">
+                <span class="receipt-label">Room Type</span>
+                <span class="receipt-value" id="receipt-room">---</span>
+            </div>
+            <div class="receipt-row">
+                <span class="receipt-label">Check-in</span>
+                <span class="receipt-value" id="receipt-in">---</span>
+            </div>
+            <div class="receipt-row">
+                <span class="receipt-label">Check-out</span>
+                <span class="receipt-value" id="receipt-out">---</span>
+            </div>
+            <div class="receipt-row">
+                <span class="receipt-label">Payment Method</span>
+                <span class="receipt-value" id="receipt-method">---</span>
+            </div>
+            <div class="receipt-row">
+                <span class="receipt-label">Status</span>
+                <span class="receipt-value"><span class="badge badge-success">PAID</span></span>
+            </div>
+        </div>
+
+        <div class="receipt-total">
+            <span style="font-size: 1.25rem; font-weight: 600;">Total Paid</span>
+            <span style="font-size: 1.75rem; font-weight: 800; color: var(--primary-color);" id="receipt-total">$0.00</span>
+        </div>
+
+        <div class="receipt-actions">
+            <button class="btn btn-outline" style="flex: 1;" onclick="window.print()"><i class="fa-solid fa-print"></i> Print Receipt</button>
+            <button class="btn btn-primary" style="flex: 1;" onclick="window.location.href='dashboard.html'"><i class="fa-solid fa-arrow-right"></i> Go to Dashboard</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const bookingId = urlParams.get('id');
+            
+            if (!bookingId) {
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            const mockBookings = JSON.parse(localStorage.getItem('mockBookings') || '[]');
+            const booking = mockBookings.find(b => b.id == bookingId);
+            const user = JSON.parse(localStorage.getItem('user') || '{}');
+
+            if (!booking) {
+                alert('Booking not found!');
+                window.location.href = 'dashboard.html';
+                return;
+            }
+
+            document.getElementById('receipt-date').textContent = booking.bookingDate || new Date().toLocaleDateString();
+            document.getElementById('receipt-id').textContent = `#${booking.id}`;
+            document.getElementById('receipt-guest').textContent = user.name || 'Guest';
+            document.getElementById('receipt-room').textContent = booking.roomName;
+            
+            // Format dates
+            const checkInDate = new Date(booking.checkIn).toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+            const checkOutDate = new Date(booking.checkOut).toLocaleDateString(undefined, { weekday: 'short', year: 'numeric', month: 'short', day: 'numeric' });
+            
+            document.getElementById('receipt-in').textContent = checkInDate;
+            document.getElementById('receipt-out').textContent = checkOutDate;
+            
+            document.getElementById('receipt-method').textContent = booking.paymentMethod || 'Credit Card';
+            document.getElementById('receipt-total').textContent = booking.totalPaid || 'Paid';
+        });
+    </script>
+</body>
+</html>

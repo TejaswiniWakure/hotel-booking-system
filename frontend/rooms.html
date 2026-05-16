@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rooms | LuxeStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-hotel"></i> LuxeStay</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rooms.html" class="active">Rooms</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="login.html" id="nav-login">Login</a>
+                <a href="register.html" id="nav-register" class="btn btn-primary">Sign Up</a>
+                <a href="dashboard.html" id="nav-dashboard" style="display: none;">Dashboard</a>
+                <button class="theme-toggle" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 6rem; padding-bottom: 4rem;">
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+            <h2>Available Rooms</h2>
+            <div style="display: flex; gap: 1rem;">
+                <select class="form-group" style="margin-bottom: 0;" id="sort-rooms">
+                    <option value="price-asc">Price: Low to High</option>
+                    <option value="price-desc">Price: High to Low</option>
+                    <option value="rating">Top Rated</option>
+                </select>
+            </div>
+        </div>
+        
+        <div id="loading" style="text-align: center; padding: 3rem;">
+            <i class="fa-solid fa-spinner fa-spin fa-3x" style="color: var(--primary-color);"></i>
+        </div>
+
+        <div class="rooms-grid" id="rooms-container" style="padding: 0; display: none;">
+            <!-- Rooms dynamically loaded from backend via JS -->
+        </div>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/rooms.js"></script>
+</body>
+</html>

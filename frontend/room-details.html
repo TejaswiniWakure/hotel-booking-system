@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Room Details | LuxeStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-hotel"></i> LuxeStay</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rooms.html" class="active">Rooms</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="login.html" id="nav-login">Login</a>
+                <a href="register.html" id="nav-register" class="btn btn-primary">Sign Up</a>
+                <a href="dashboard.html" id="nav-dashboard" style="display: none;">Dashboard</a>
+                <button class="theme-toggle" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 6rem; padding-bottom: 4rem;">
+        <div id="room-detail-container" style="display: none;">
+            <div style="margin-bottom: 2rem;">
+                <a href="rooms.html" style="color: var(--primary-color); text-decoration: none; font-weight: 500;"><i class="fa-solid fa-arrow-left"></i> Back to Rooms</a>
+            </div>
+            
+            <div style="border-radius: 16px; overflow: hidden; margin-bottom: 2rem; height: 500px; box-shadow: var(--shadow-md);">
+                <img id="detail-img" src="" alt="Room Image" style="width: 100%; height: 100%; object-fit: cover;">
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 3rem;">
+                <div>
+                    <h1 id="detail-title" style="margin-bottom: 0.5rem; font-size: 2.5rem;">Room Name</h1>
+                    <div style="color: var(--text-muted); font-size: 1.1rem; margin-bottom: 1.5rem; display: flex; gap: 1rem; align-items: center;">
+                        <span><i class="fa-solid fa-location-dot" style="color: var(--primary-color);"></i> <span id="detail-location">Location</span></span>
+                        <span id="detail-rating"><i class="fa-solid fa-star" style="color: gold;"></i> 5.0 (100 reviews)</span>
+                    </div>
+
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">About this room</h3>
+                    <p id="detail-desc" style="color: var(--text-muted); line-height: 1.8; margin-bottom: 2rem; font-size: 1.1rem;">
+                        Detailed description goes here.
+                    </p>
+
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Amenities & Features</h3>
+                    <div id="detail-features" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 2rem;">
+                        <!-- Features generated here -->
+                    </div>
+
+                    <h3 style="margin-bottom: 1rem; font-size: 1.5rem;">Hotel Rules</h3>
+                    <ul style="color: var(--text-muted); line-height: 1.8; list-style-position: inside;">
+                        <li>Check-in: 2:00 PM - 10:00 PM</li>
+                        <li>Check-out: 11:00 AM</li>
+                        <li>No smoking inside the rooms</li>
+                        <li>Pets are not allowed</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div style="background: var(--bg-main); border: 1px solid var(--border-color); border-radius: 16px; padding: 2rem; position: sticky; top: 100px; box-shadow: var(--shadow-sm);">
+                        <div style="font-size: 2rem; font-weight: 700; margin-bottom: 1rem;">
+                            <span id="detail-price">$0</span> <span style="font-size: 1rem; color: var(--text-muted); font-weight: 400;">/ night</span>
+                        </div>
+                        
+                        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1.5rem 0;">
+                        
+                        <div style="margin-bottom: 1.5rem; display: flex; align-items: center; gap: 0.5rem; color: var(--success-color);" id="detail-availability">
+                            <i class="fa-solid fa-check-circle"></i> Available to book
+                        </div>
+                        
+                        <a href="#" id="detail-book-btn" class="btn btn-primary" style="width: 100%; text-align: center; font-size: 1.1rem; padding: 1rem;">Reserve Now</a>
+                        
+                        <p style="text-align: center; color: var(--text-muted); font-size: 0.875rem; margin-top: 1rem;">You won't be charged yet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div id="loading" style="text-align: center; padding: 5rem 0;">
+            <i class="fa-solid fa-spinner fa-spin fa-3x" style="color: var(--primary-color);"></i>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container" style="text-align: center; color: var(--text-muted); padding: 2rem 0; margin-top: 4rem; border-top: 1px solid var(--border-color);">
+            <p>&copy; 2026 LuxeStay Hotel Booking. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        const MOCK_ROOMS = [
+            {
+                id: 1,
+                roomName: "Deluxe Ocean View",
+                location: "Mumbai",
+                price: 299,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1582719508461-905c673771fd?w=800&q=80",
+                description: "Experience the ultimate luxury with a panoramic view of the ocean. Features a king-sized bed, a private balcony, a modern marble bathroom with a rain shower, and a fully stocked mini-bar. Perfect for a romantic getaway or a premium business trip. Enjoy 24/7 room service and complimentary access to the executive lounge.",
+                rating: 4.8,
+                reviews: 124,
+                features: ["King Bed", "Ocean View", "Free High-Speed Wi-Fi", "Mini Bar", "Room Service", "Executive Lounge Access"]
+            },
+            {
+                id: 2,
+                roomName: "Executive Suite",
+                location: "Pune",
+                price: 450,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1631049307264-da0ec9d70304?w=800&q=80",
+                description: "A spacious suite designed for business and leisure. Includes a separate living area, work desk, and premium amenities. The soundproof walls ensure absolute tranquility in the heart of the city. You also get a dedicated concierge and complimentary breakfast buffet.",
+                rating: 5.0,
+                reviews: 89,
+                features: ["King Bed", "City View", "Separate Living Room", "Work Desk", "Soundproof", "Concierge"]
+            },
+            {
+                id: 3,
+                roomName: "Standard Double",
+                location: "Lonavala",
+                price: 150,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&q=80",
+                description: "Perfect for families or friends. Comfortable, modern, and equipped with everything you need for a great stay. Wake up to breathtaking mountain views. The room includes a flat-screen TV, a coffee maker, and an en-suite bathroom.",
+                rating: 4.2,
+                reviews: 56,
+                features: ["2 Queen Beds", "Mountain View", "Coffee Maker", "Flat-screen TV", "Air Conditioning"]
+            },
+            {
+                id: 4,
+                roomName: "Presidential Penthouse",
+                location: "Mahabaleshwar",
+                price: 1200,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1578683010236-d716f9a3f461?w=800&q=80",
+                description: "The epitome of luxury. This penthouse offers unparalleled comfort, a private infinity pool overlooking the hills, and 24/7 butler service. It features three huge bedrooms, a fully equipped private kitchen, and a dining room that seats 12.",
+                rating: 4.9,
+                reviews: 32,
+                features: ["Private Infinity Pool", "Butler Service", "3 Bedrooms", "Private Kitchen", "Dining Room", "Panoramic Views"]
+            },
+            {
+                id: 5,
+                roomName: "Cozy Single Room",
+                location: "Nashik",
+                price: 99,
+                availability: false,
+                image: "https://images.unsplash.com/photo-1618221118493-9cfa1a1c00da?w=800&q=80",
+                description: "A snug and affordable option for solo travelers. Includes a comfortable bed, essential amenities, and a dedicated workspace. Ideal for a short stay or a solo vineyard tour.",
+                rating: 4.0,
+                reviews: 45,
+                features: ["Single Bed", "Free Wifi", "Breakfast Included", "Workspace", "Tea Maker"]
+            },
+            {
+                id: 6,
+                roomName: "Family Suite",
+                location: "Solapur",
+                price: 350,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1566665797739-1674de7a421a?w=800&q=80",
+                description: "Spacious enough for the whole family. Features multiple beds, a small kitchenette, and a kid's play area. Designed to keep the children entertained while the parents relax.",
+                rating: 4.7,
+                reviews: 112,
+                features: ["Multiple Beds", "Kitchenette", "Living Area", "Kid's Play Area", "Bathtub"]
+            },
+            {
+                id: 7,
+                roomName: "Heritage Villa",
+                location: "Aurangabad",
+                price: 250,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1584132967334-10e028bd69f7?w=800&q=80",
+                description: "Experience historical charm with modern amenities near the famous caves. This independent villa features antique wooden furniture, an open-to-sky shower, and access to a massive shared garden.",
+                rating: 4.5,
+                reviews: 78,
+                features: ["Heritage Decor", "Pool Access", "Guided Tours", "Open Shower", "Private Garden Area"]
+            },
+            {
+                id: 8,
+                roomName: "Beachside Retreat",
+                location: "Alibaug",
+                price: 320,
+                availability: true,
+                image: "https://images.unsplash.com/photo-1499793983690-e29da59ef1c2?w=800&q=80",
+                description: "Relax by the shore with direct beach access and stunning sunsets. Step out of your room directly onto the soft sand. Includes a private patio, hammock, and exclusive access to the seaside seafood restaurant.",
+                rating: 4.6,
+                reviews: 95,
+                features: ["Direct Beach Access", "Private Patio", "Hammock", "Seafood Dining", "Spa Services"]
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const urlParams = new URLSearchParams(window.location.search);
+            const roomId = urlParams.get('id');
+            
+            if (!roomId) {
+                window.location.href = 'rooms.html';
+                return;
+            }
+
+            const room = MOCK_ROOMS.find(r => r.id == roomId);
+
+            setTimeout(() => {
+                document.getElementById('loading').style.display = 'none';
+                
+                if (!room) {
+                    document.getElementById('room-detail-container').innerHTML = '<h2 style="text-align:center; padding: 4rem;">Room not found</h2>';
+                    document.getElementById('room-detail-container').style.display = 'block';
+                    return;
+                }
+
+                document.getElementById('detail-img').src = room.image;
+                document.getElementById('detail-title').textContent = room.roomName;
+                document.getElementById('detail-location').textContent = room.location;
+                document.getElementById('detail-rating').innerHTML = `<i class="fa-solid fa-star" style="color: gold;"></i> ${room.rating} (${room.reviews} reviews)`;
+                document.getElementById('detail-desc').textContent = room.description;
+                document.getElementById('detail-price').textContent = `$${room.price}`;
+                
+                // Features
+                const featuresHtml = room.features.map(f => `
+                    <div style="display: flex; align-items: center; gap: 0.5rem; color: var(--text-main);">
+                        <i class="fa-solid fa-check" style="color: var(--primary-color);"></i> ${f}
+                    </div>
+                `).join('');
+                document.getElementById('detail-features').innerHTML = featuresHtml;
+
+                // Availability
+                if(room.availability) {
+                    document.getElementById('detail-book-btn').href = `booking.html?room=${room.id}`;
+                } else {
+                    const btn = document.getElementById('detail-book-btn');
+                    btn.textContent = 'Sold Out';
+                    btn.style.opacity = '0.5';
+                    btn.style.cursor = 'not-allowed';
+                    btn.href = '#';
+                    
+                    const avail = document.getElementById('detail-availability');
+                    avail.style.color = 'var(--error-color)';
+                    avail.innerHTML = '<i class="fa-solid fa-times-circle"></i> Currently unavailable';
+                }
+
+                document.getElementById('room-detail-container').style.display = 'block';
+            }, 500); // Simulate loading
+        });
+    </script>
+</body>
+</html>

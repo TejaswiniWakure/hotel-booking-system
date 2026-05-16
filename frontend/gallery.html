@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gallery | LuxeStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-hotel"></i> LuxeStay</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rooms.html">Rooms</a>
+                <a href="gallery.html" class="active">Gallery</a>
+                <a href="login.html" id="nav-login">Login</a>
+                <a href="register.html" id="nav-register" class="btn btn-primary">Sign Up</a>
+                <a href="dashboard.html" id="nav-dashboard" style="display: none;">Dashboard</a>
+                <button class="theme-toggle" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 6rem; padding-bottom: 4rem;">
+        <div style="text-align: center; margin-bottom: 4rem;">
+            <h2 class="section-title">Hotel Facilities & Dining</h2>
+            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto; font-size: 1.1rem;">Explore our world-class amenities and exquisite dining options designed for your ultimate comfort.</p>
+        </div>
+        
+        <div style="margin-bottom: 4rem;">
+            <h3 style="margin-bottom: 2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-spa" style="color: var(--primary-color);"></i> Amenities & Facilities</h3>
+            <div class="gallery-grid" style="gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <!-- Amenities -->
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1576013551627-0cc20b96c2a7?w=800&q=80" alt="Swimming Pool" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Swimming Pool</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1544161515-4ab6ce6db874?w=800&q=80" alt="Spa & Wellness" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Spa & Wellness</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80" alt="Gym & Fitness" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Gym & Fitness</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1541971875076-8f970d573be6?w=800&q=80" alt="Grand Lobby" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Grand Lobby</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1517502884422-41eaead166d4?w=800&q=80" alt="Conference Room" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Conference Room</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?w=800&q=80" alt="Luxury Reception" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Luxury Reception</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1585412727339-54e4bae3bbf9?w=800&q=80" alt="Outdoor Gardens" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Outdoor Gardens</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div style="margin-bottom: 2rem;">
+            <h3 style="margin-bottom: 2rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class="fa-solid fa-utensils" style="color: var(--primary-color);"></i> Restaurants & Dining</h3>
+            <div class="gallery-grid" style="gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <!-- Restaurants -->
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=800&q=80" alt="Fine Dining" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Fine Dining</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=800&q=80" alt="Open Air Cafe" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Open Air Cafe</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1436018626274-89acd1d6ec9d?w=800&q=80" alt="Bar & Lounge" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Bar & Lounge</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1493770348161-369560ae357d?w=800&q=80" alt="Breakfast Buffet" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Breakfast Buffet</h4>
+                    </div>
+                </div>
+                <div class="gallery-item" style="position: relative; overflow: hidden; border-radius: 12px; height: 200px;">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?w=800&q=80" alt="Dinner Buffet" style="width: 100%; height: 100%; object-fit: cover;">
+                    <div class="gallery-overlay" style="position: absolute; inset: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); display: flex; align-items: flex-end; padding: 1rem;">
+                        <h4 style="color: white; font-size: 1.25rem;">Dinner Buffet</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <!-- Minimal footer for gallery -->
+        <div class="container" style="text-align: center; color: var(--text-muted); padding: 2rem 0;">
+            <p>&copy; 2026 LuxeStay Hotel Booking. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

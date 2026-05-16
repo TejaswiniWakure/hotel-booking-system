@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Book Room | LuxeStay</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-hotel"></i> LuxeStay</a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="rooms.html">Rooms</a>
+                <a href="login.html" id="nav-login">Login</a>
+                <a href="register.html" id="nav-register" class="btn btn-primary">Sign Up</a>
+                <a href="dashboard.html" id="nav-dashboard" style="display: none;">Dashboard</a>
+                <button class="theme-toggle" id="theme-toggle"><i class="fa-solid fa-moon"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container" style="padding-top: 6rem; padding-bottom: 4rem;">
+        <div style="display: grid; grid-template-columns: 1fr 350px; gap: 2rem;" id="booking-layout">
+            <div>
+                <h2>Complete Your Booking</h2>
+                <p style="color: var(--text-muted); margin-bottom: 2rem;">Please fill in the details below to confirm your stay.</p>
+                
+                <div class="form-container" style="margin: 0; max-width: 100%;">
+                    <form id="bookingForm">
+                        <input type="hidden" id="roomId" name="roomId">
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label for="checkIn">Check-in Date</label>
+                                <input type="date" id="checkIn" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="checkOut">Check-out Date</label>
+                                <input type="date" id="checkOut" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="guests">Number of Guests</label>
+                            <select id="guests" required>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="specialRequests">Special Requests (Optional)</label>
+                            <textarea id="specialRequests" rows="3" placeholder="E.g. early check-in, dietary requirements..."></textarea>
+                        </div>
+                        
+                        <h3 style="margin: 2rem 0 1rem; border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;"><i class="fa-solid fa-credit-card" style="color: var(--primary-color);"></i> Payment Details</h3>
+                        <div class="form-group">
+                            <label for="cardName">Name on Card</label>
+                            <input type="text" id="cardName" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="cardNumber">Card Number</label>
+                            <input type="text" id="cardNumber" placeholder="0000 0000 0000 0000" maxlength="19" required>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                            <div class="form-group">
+                                <label for="cardExpiry">Expiry Date</label>
+                                <input type="text" id="cardExpiry" placeholder="MM/YY" maxlength="5" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="cardCvv">CVV</label>
+                                <input type="password" id="cardCvv" placeholder="123" maxlength="4" required>
+                            </div>
+                        </div>
+                        
+                        <div id="booking-error" style="color: var(--error-color); margin-bottom: 1rem; display: none;"></div>
+                        <div id="booking-success" style="color: var(--success-color); margin-bottom: 1rem; display: none;"></div>
+                        
+                        <button type="submit" id="submit-btn" class="btn btn-primary" style="width: 100%; margin-top: 1rem; font-size: 1.1rem;">Confirm & Pay <span id="btn-total"></span></button>
+                    </form>
+                </div>
+            </div>
+            
+            <div>
+                <div class="room-card" style="position: sticky; top: 100px;">
+                    <img id="summary-img" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Room" class="room-image" style="height: 200px;">
+                    <div class="room-content">
+                        <h3 id="summary-title" style="margin-bottom: 0.5rem;">Deluxe Ocean View</h3>
+                        <div id="summary-rating" class="room-rating" style="margin-bottom: 1rem; font-size: 0.875rem;">
+                            <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star-half-stroke"></i> <span>4.8</span>
+                        </div>
+                        
+                        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1rem 0;">
+                        
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Price per night</span>
+                            <span id="summary-price" style="font-weight: 600;">$299</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem;">
+                            <span style="color: var(--text-muted);">Nights</span>
+                            <span id="summary-nights" style="font-weight: 600;">0</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem;">
+                            <span style="color: var(--text-muted);">Taxes & Fees</span>
+                            <span id="summary-tax" style="font-weight: 600;">$0</span>
+                        </div>
+                        
+                        <hr style="border: none; border-top: 1px solid var(--border-color); margin: 1rem 0;">
+                        
+                        <div style="display: flex; justify-content: space-between; font-size: 1.25rem; font-weight: 700;">
+                            <span>Total</span>
+                            <span id="summary-total" style="color: var(--primary-color);">$0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <style>
+        @media (max-width: 768px) {
+            #booking-layout {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+
+    <script src="js/main.js"></script>
+    <script src="js/booking.js"></script>
+</body>
+</html>

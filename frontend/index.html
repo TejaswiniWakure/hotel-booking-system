@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LuxeStay | Find Your Perfect Stay</title>
+    <meta name="description" content="Book premium hotel rooms with ease. Discover the best luxury stays globally.">
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <a href="index.html" class="logo"><i class="fa-solid fa-hotel"></i> LuxeStay</a>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="rooms.html">Rooms</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="login.html" id="nav-login">Login</a>
+                <a href="register.html" id="nav-register" class="btn btn-primary">Sign Up</a>
+                <a href="dashboard.html" id="nav-dashboard" style="display: none;">Dashboard</a>
+                <button class="theme-toggle" id="theme-toggle" aria-label="Toggle Dark Mode">
+                    <i class="fa-solid fa-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container hero-content">
+            <h1>Find Your Perfect Stay</h1>
+            <p>Experience luxury and comfort in our meticulously curated hotel rooms around the world.</p>
+            
+            <div class="search-bar">
+                <div class="search-input-group">
+                    <label for="location">Location</label>
+                    <input type="text" id="location" placeholder="Where are you going?">
+                </div>
+                <div class="search-input-group">
+                    <label for="check-in">Check-in</label>
+                    <input type="date" id="check-in">
+                </div>
+                <div class="search-input-group">
+                    <label for="check-out">Check-out</label>
+                    <input type="date" id="check-out">
+                </div>
+                <div class="search-input-group" style="flex: 0.5;">
+                    <button class="btn btn-primary" style="height: 100%; width: 100%; margin-top: 1.5rem;" onclick="searchRooms()">
+                        <i class="fa-solid fa-search"></i> Search
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section class="container" style="padding: 5rem 1.5rem 0;">
+        <h2 class="section-title" style="margin-bottom: 2rem;">Top Destinations in Maharashtra</h2>
+        <div class="gallery-grid" style="gap: 1.5rem; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <a href="rooms.html?location=Mumbai" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/mumbai,city/all" alt="Mumbai">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Mumbai</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Pune" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/pune,city/all" alt="Pune">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Pune</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Lonavala" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/lonavala,nature/all" alt="Lonavala">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Lonavala</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Mahabaleshwar" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/mahabaleshwar,hills/all" alt="Mahabaleshwar">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Mahabaleshwar</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Nashik" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/nashik,city/all" alt="Nashik">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Nashik</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Aurangabad" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/aurangabad,monument/all" alt="Aurangabad">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Aurangabad</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Alibaug" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/alibaug,beach/all" alt="Alibaug">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Alibaug</h3>
+                </div>
+            </a>
+            <a href="rooms.html?location=Solapur" class="gallery-item" style="position: relative; display: block; height: 180px;">
+                <img src="https://loremflickr.com/800/600/solapur,city/all" alt="Solapur">
+                <div style="position: absolute; inset: 0; background: rgba(0,0,0,0.4); display: flex; align-items: center; justify-content: center; transition: var(--transition);" onmouseover="this.style.background='rgba(0,0,0,0.2)'" onmouseout="this.style.background='rgba(0,0,0,0.4)'">
+                    <h3 style="color: white; font-size: 1.5rem; font-weight: 700; text-shadow: 0 2px 4px rgba(0,0,0,0.5);">Solapur</h3>
+                </div>
+            </a>
+        </div>
+    </section>
+
+    <section class="container" style="padding: 5rem 1.5rem;">
+        <h2 class="section-title">Featured Rooms</h2>
+        <div class="rooms-grid" id="featured-rooms">
+            <!-- Rooms will be populated by JS -->
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Deluxe Ocean View" class="room-image">
+                <div class="room-content">
+                    <div class="room-header">
+                        <h3 class="room-title">Deluxe Ocean View</h3>
+                        <div class="room-price">$299 <span>/night</span></div>
+                    </div>
+                    <div class="room-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star-half-stroke"></i>
+                        <span>4.8 (124 reviews)</span>
+                    </div>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-bed"></i> King Bed</span>
+                        <span><i class="fa-solid fa-water"></i> Ocean View</span>
+                        <span><i class="fa-solid fa-wifi"></i> Free Wifi</span>
+                    </div>
+                    <a href="booking.html?room=1" class="btn btn-outline" style="width: 100%;">Book Now</a>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Executive Suite" class="room-image">
+                <div class="room-content">
+                    <div class="room-header">
+                        <h3 class="room-title">Executive Suite</h3>
+                        <div class="room-price">$450 <span>/night</span></div>
+                    </div>
+                    <div class="room-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <span>5.0 (89 reviews)</span>
+                    </div>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-bed"></i> King Bed</span>
+                        <span><i class="fa-solid fa-city"></i> City View</span>
+                        <span><i class="fa-solid fa-martini-glass"></i> Mini Bar</span>
+                    </div>
+                    <a href="booking.html?room=2" class="btn btn-outline" style="width: 100%;">Book Now</a>
+                </div>
+            </div>
+
+            <div class="room-card">
+                <img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Standard Double Room" class="room-image">
+                <div class="room-content">
+                    <div class="room-header">
+                        <h3 class="room-title">Standard Double</h3>
+                        <div class="room-price">$150 <span>/night</span></div>
+                    </div>
+                    <div class="room-rating">
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-solid fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <span>4.2 (56 reviews)</span>
+                    </div>
+                    <div class="room-features">
+                        <span><i class="fa-solid fa-bed"></i> 2 Queen Beds</span>
+                        <span><i class="fa-solid fa-tv"></i> Smart TV</span>
+                        <span><i class="fa-solid fa-mug-hot"></i> Coffee</span>
+                    </div>
+                    <a href="booking.html?room=3" class="btn btn-outline" style="width: 100%;">Book Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <h3 class="logo" style="font-size: 1.25rem;"><i class="fa-solid fa-hotel"></i> LuxeStay</h3>
+                    <p style="color: var(--text-muted); margin-top: 1rem;">Experience the perfect blend of luxury, comfort, and convenience with LuxeStay hotels globally.</p>
+                </div>
+                <div class="footer-col">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="rooms.html">Rooms</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="#">About Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Support</h3>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h3>Connect With Us</h3>
+                    <div style="display: flex; gap: 1rem; font-size: 1.5rem; margin-top: 1rem;">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 LuxeStay Hotel Booking. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+    <script>
+        function searchRooms() {
+            const location = document.getElementById('location').value;
+            if (location) {
+                window.location.href = `rooms.html?location=${encodeURIComponent(location)}`;
+            } else {
+                window.location.href = 'rooms.html';
+            }
+        }
+    </script>
+</body>
+</html>
