@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
             const errorMsg = document.getElementById('error-message');
-            
+
             try {
                 // In a real app, this would be an API call
                 const usersDB = JSON.parse(localStorage.getItem('usersDB'));
@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (user) {
                     // Mock JWT token
                     localStorage.setItem('token', 'mock-jwt-token-' + user.id);
-                    
+
                     // Don't save password in session
                     const sessionUser = { ...user };
                     delete sessionUser.password;
-                    
+
                     localStorage.setItem('user', JSON.stringify(sessionUser));
                     localStorage.setItem('role', user.role);
-                    
+
                     window.location.href = user.role === 'ADMIN' ? 'admin.html' : 'dashboard.html';
                 } else {
                     errorMsg.textContent = 'Invalid email or password. If you do not have an account, please sign up.';
@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 // In a real app, this would be an API call
                 const usersDB = JSON.parse(localStorage.getItem('usersDB'));
-                
+
                 if (usersDB.find(u => u.email === email)) {
                     errorMsg.textContent = 'An account with this email already exists. Please login.';
                     errorMsg.style.display = 'block';
@@ -88,10 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 successMsg.textContent = 'Registration successful! Redirecting to login...';
                 successMsg.style.display = 'block';
-                
+
                 // Extra Feature: Mock Email Confirmation message
                 alert(`A confirmation email has been sent to ${email}. Please check your inbox!`);
-                
+
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 2000);
